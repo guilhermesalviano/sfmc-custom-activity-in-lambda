@@ -21,15 +21,15 @@ resource "aws_lambda_function" "app" {
     }
 }
 
-resource "aws_lambda_alias" "app_default" {
-  name             = "default"
-  description      = "Default lambda alias"
-  function_name    = aws_lambda_function.app.arn
-  function_version = aws_lambda_function.app.version
-}
+#resource "aws_lambda_alias" "app_default" {
+#  name             = "default"
+#  description      = "Default lambda alias"
+#  function_name    = aws_lambda_function.app.arn
+#  function_version = aws_lambda_function.app.version
+#}
 
 resource "aws_lambda_function_url" "app_default" {
-  function_name      = aws_lambda_alias.app_default.arn
+  function_name      = aws_lambda_function.app.arn
   authorization_type = "NONE"
 }
 
